@@ -1,0 +1,55 @@
+var express=require('express');
+var router=express.Router();
+var student=require('../Models/student_model');
+
+router.post('/',function(req,res,next){
+    student.addStudent(req.body,function(err,rows){
+        if(err){
+            res.json(err);
+        }
+        else{
+            res.json(rows);
+        }
+    });
+});
+router.put('/:id',function(req,res,next){
+    student.updateStudent(req.params.id,req.body,function(err,rows){
+        if(err){
+            res.json(err);
+        }
+        else{
+            res.json(rows);
+        }
+    });
+});
+router.delete('/:id',function(req,res,next){
+    student.deleteStudent(req.params.id,function(err,rows){
+        if(err){
+            res.json(err);
+        }
+        else{
+            res.json(rows);
+        }
+    });
+});
+router.get('/',function(req,res,next){
+    student.getAllStudents(function(err,rows){
+        if(err){
+            res.json(err);
+        }
+        else{
+            res.json(rows);
+        }
+    });
+});
+router.get('/:id',function(req,res,next){
+    student.getStudentByRollNumber(req.params.id,function(err,rows){
+        if(err){
+            res.json(err);
+        }
+        else{
+            res.json(rows);
+        }
+    });
+});
+module.exports=router;
