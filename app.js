@@ -11,6 +11,7 @@ var products=require('./routes/product_routes');
 var student=require('./routes/student_routes');
 var product=require('./routes/product_route1');
 var user=require('./routes/user_routes');
+var login=require('./routes/login_router');
 var app = express();
 
 // view engine setup
@@ -32,6 +33,7 @@ app.use('/products',products);
 app.use('/student',student);
 app.use('/product',product);
 app.use('/user',user);
+app.use('/login',login);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
